@@ -15,3 +15,15 @@ class TestCartItem:
         price = 14.99
         result = CartItem(item, price).calculate_price()
         assert result == "1.50"
+
+    def test_should_add_import_duty_only_on_exempt_items(self):
+        item = Item(True, True)
+        price = 10.00
+        result = CartItem(item, price).calculate_price()
+        assert result == "0.50"
+
+    def test_should_add_sales_tax_and_import_duty_on_non_exempt_items(self):
+        item = Item(False, True)
+        price = 47.50
+        result = CartItem(item, price).calculate_price()
+        assert result == "7.15"
