@@ -4,6 +4,8 @@ class CartItem:
         self.item = item
 
     def calculate_price(self):
-        return self.price
+        if self.item.is_exempt:
+            return "0.00"
+        return f'{(self.price * 10) / 100 :0.2f}'
 
 
