@@ -90,4 +90,10 @@ Sales Taxes: 6.70
 
 Total: 74.68
 
+---
+Install prequisites using pip
+`pip3 install -r requirements.txt`
 
+---
+How to run python validation tests for the 3 different inputs using Pybuilder
+`pyb`
