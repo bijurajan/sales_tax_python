@@ -12,14 +12,14 @@ class CartItem:
 
     def calculate_sales_tax_value(self):
         if self.item.is_exempt and self.item.is_imported:
-            return self.price * 5 / 100
+            return self.round_up_to_2_decimals(self.price * 5 / 100)
         if self.item.is_exempt:
             return 0
         if self.item.is_imported:
             basic_sales_tax = self.round_up_to_2_decimals(self.price * 10/100)
             import_tax = self.round_up_to_2_decimals(self.price * 5/100)
             return basic_sales_tax + import_tax
-        return self.price * 10 / 100
+        return self.round_up_to_2_decimals(self.price * 10 / 100)
 
     def calculate_price_with_tax(self):
         return f'{(self.price + self.calculate_sales_tax_value()):0.2f}'
